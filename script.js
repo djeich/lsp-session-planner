@@ -364,7 +364,10 @@ function createPhaseElement(phase, index) {
     div.dataset.index = index;
 
     div.innerHTML = `
-        <div>
+        <div class="drag-handle">
+            <i class="fas fa-grip-vertical"></i>
+        </div>
+        <div class="phase-content">
             <strong>${phase.name}</strong> (${phase.duration}m)
             <div class="phase-description">${phase.description || ''}</div>
         </div>
@@ -380,6 +383,23 @@ function createPhaseElement(phase, index) {
             </button>
         </div>
     `;
+
+    // Add drag event listeners to phase items
+    div.addEventListener('dragstart', (e) => {
+        div.classList.add('dragging');
+        e.dataTransfer.setData('type', 'phase');
+        e.dataTransfer.setData('index', index);
+    });
+
+    div.addEventListener('dragend', () => {
+        div.classList.remove('dragging');
+        // Update the workshop phases order based on DOM order
+        const newOrder = Array.from(document.querySelectorAll('.phase-item')).map(item => 
+            currentWorkshop.phases[parseInt(item.dataset.index)]
+        );
+        currentWorkshop.phases = newOrder;
+        updateTimeline();
+    });
 
     return div;
 }
@@ -485,11 +505,16 @@ function updateTimerDisplay() {
 
 // Template Management
 function loadTemplate(template) {
-    currentWorkshop = {
-        name: template.name,
-        phases: [...template.phases]
-    };
+    if (!currentWorkshop) {
+        currentWorkshop = {
+            name: template.name,
+            phases: []
+        };
+    }
+    // Append new phases instead of replacing
+    currentWorkshop.phases = [...currentWorkshop.phases, ...template.phases];
     updateTimeline();
+    updateTotalDuration();
 }
 
 // Local Storage Management
@@ -662,6 +687,7 @@ function setupDragAndDrop() {
         btn.addEventListener('dragstart', (e) => {
             btn.classList.add('dragging');
             e.dataTransfer.setData('text/plain', btn.dataset.template);
+            e.dataTransfer.setData('type', 'template');
         });
 
         btn.addEventListener('dragend', () => {
@@ -672,6 +698,15 @@ function setupDragAndDrop() {
     timeline.addEventListener('dragover', (e) => {
         e.preventDefault();
         timeline.classList.add('drag-over');
+        const draggable = document.querySelector('.dragging');
+        if (draggable && draggable.classList.contains('phase-item')) {
+            const afterElement = getDragAfterElement(timeline, e.clientY);
+            if (afterElement == null) {
+                timeline.appendChild(draggable);
+            } else {
+                timeline.insertBefore(draggable, afterElement);
+            }
+        }
     });
 
     timeline.addEventListener('dragleave', () => {
@@ -682,13 +717,31 @@ function setupDragAndDrop() {
         e.preventDefault();
         timeline.classList.remove('drag-over');
         
-        const templateName = e.dataTransfer.getData('text/plain');
-        const template = WORKSHOP_TEMPLATES[templateName];
-        
-        if (template) {
-            loadTemplate(template);
+        const type = e.dataTransfer.getData('type');
+        if (type === 'template') {
+            const templateName = e.dataTransfer.getData('text/plain');
+            const template = WORKSHOP_TEMPLATES[templateName];
+            if (template) {
+                loadTemplate(template);
+            }
         }
     });
+}
+
+// Helper function to determine where to place dragged element
+function getDragAfterElement(container, y) {
+    const draggableElements = [...container.querySelectorAll('.phase-item:not(.dragging)')];
+    
+    return draggableElements.reduce((closest, child) => {
+        const box = child.getBoundingClientRect();
+        const offset = y - box.top - box.height / 2;
+        
+        if (offset < 0 && offset > closest.offset) {
+            return { offset: offset, element: child };
+        } else {
+            return closest;
+        }
+    }, { offset: Number.NEGATIVE_INFINITY }).element;
 }
 
 // Add function to show detailed guide

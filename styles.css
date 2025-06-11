@@ -531,33 +531,45 @@ footer {
 }
 
 .phase-item {
-    background-color: var(--surface-color);
-    border: 2px solid var(--lego-yellow);
-    border-radius: 8px;
-    padding: 1rem;
-    margin-bottom: 0.8rem;
-    cursor: move;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    position: relative;
+    background-color: var(--surface-color);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    border: 2px solid var(--border-color);
     transition: all 0.3s ease;
+    cursor: grab;
 }
 
-.phase-item::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    height: 8px;
-    background-color: var(--lego-yellow);
-    border-radius: 6px 6px 0 0;
+.phase-item:active {
+    cursor: grabbing;
 }
 
-.phase-item:hover {
-    transform: translateX(5px);
-    box-shadow: -5px 5px 0 var(--lego-blue);
+.phase-item.dragging {
+    opacity: 0.5;
+    border: 2px dashed var(--lego-blue);
+}
+
+.drag-handle {
+    color: var(--text-secondary);
+    padding: 0.5rem;
+    margin-right: 1rem;
+    cursor: grab;
+}
+
+.drag-handle:active {
+    cursor: grabbing;
+}
+
+.phase-content {
+    flex: 1;
+}
+
+.phase-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .active-timer {
@@ -704,10 +716,15 @@ footer {
 .timeline.drag-over {
     border: 2px dashed var(--lego-blue);
     background-color: rgba(0, 109, 183, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    min-height: 100px;
 }
 
-.template-btn.dragging {
-    opacity: 0.5;
+.timeline .phase-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-color: var(--lego-blue);
 }
 
 /* Info button styles */
@@ -755,12 +772,6 @@ footer {
 }
 
 /* Drag and drop styles */
-.phase-item.dragging {
-    opacity: 0.8;
-    background-color: var(--lego-background);
-    box-shadow: 0 0 0 3px var(--lego-blue);
-}
-
 .timeline.drag-over {
     border-color: var(--lego-green);
     background-color: rgba(0, 128, 0, 0.1);
