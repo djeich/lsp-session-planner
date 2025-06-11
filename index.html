@@ -1,53 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>LEGO® SERIOUS PLAY® Facilitation Quiz</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" type="image/png" href="favicon.png">
-  <meta name="description" content="Test your knowledge of LEGO® SERIOUS PLAY® facilitation with this comprehensive quiz for workshop leaders and facilitators.">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LSP Session Planner & Timer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <div class="lego-background"></div>
-  <div class="container">
-    <header>
-      <div class="lego-decoration">
-        <div class="lego-brick brick-red"></div>
-        <div class="lego-brick brick-yellow"></div>
-        <div class="lego-brick brick-blue"></div>
-      </div>
-      <h1>LEGO® SERIOUS PLAY® Facilitation Quiz</h1>
-      <p class="intro">Test your knowledge of LSP facilitation principles and best practices. This quiz will help you assess your understanding of running effective LSP workshops in organizational settings.</p>
-    </header>
+    <div class="app-container">
+        <header>
+            <h1>LSP Session Planner & Timer</h1>
+            <div class="header-controls">
+                <button id="newWorkshop" class="btn primary" title="Start fresh with a new workshop">
+                    <i class="fas fa-plus"></i> New Workshop
+                </button>
+                <button id="loadTemplate" class="btn secondary" title="Load a saved workshop template">
+                    <i class="fas fa-folder-open"></i> Load Template
+                </button>
+                <button id="saveTemplate" class="btn secondary" title="Save current workshop as a template">
+                    <i class="fas fa-save"></i> Save Template
+                </button>
+            </div>
+        </header>
 
-    <main>
-      <div class="progress-container">
-        <div class="progress-bar">
-          <div class="progress"></div>
+        <div class="intro-section">
+            <p class="intro-text">
+                Welcome to the LSP Session Planner & Timer! This tool helps you plan and manage your LEGO® SERIOUS PLAY® workshops effectively.
+                <a href="https://www.innovationtraining.org/lego-serious-play-open-source-pdf-guide/" target="_blank" rel="noopener noreferrer">
+                    Learn more about the LSP methodology <i class="fas fa-external-link-alt"></i>
+                </a>
+            </p>
+            <div class="quick-tips">
+                <h3><i class="fas fa-lightbulb"></i> Quick Tips:</h3>
+                <ul>
+                    <li><i class="fas fa-arrows-alt"></i> Drag phases to reorder them in your timeline</li>
+                    <li><i class="fas fa-clock"></i> Use the timer to keep your workshop on track</li>
+                    <li><i class="fas fa-save"></i> Save your custom workshop templates for future use</li>
+                    <li><i class="fas fa-bell"></i> Enable notifications to get phase transition alerts</li>
+                </ul>
+            </div>
         </div>
-        <div class="progress-text">0% Complete</div>
-      </div>
-      <div id="quiz"></div>
-      <div class="button-container">
-        <button id="submit" class="submit-btn">
-          <i class="fas fa-check-circle"></i> Submit Quiz
-        </button>
-        <button id="restart" class="restart-btn" style="display: none;">
-          <i class="fas fa-redo"></i> Take Quiz Again
-        </button>
-      </div>
-      <div id="results" class="results"></div>
-    </main>
 
-    <footer>
-      <p>Based on the LSP Open Source material and facilitation best practices</p>
-      <p class="resource-link">Access the complete guide: <a href="https://www.innovationtraining.org/lego-serious-play-open-source-pdf-guide/" target="_blank" rel="noopener noreferrer">LEGO® SERIOUS PLAY® Open Source Guide Info</a></p>
-      <p class="copyright">© 2024 All rights reserved. LEGO® is a trademark of the LEGO Group.</p>
-    </footer>
-  </div>
+        <main>
+            <div class="workshop-builder">
+                <div class="timeline-container">
+                    <h2>Workshop Timeline</h2>
+                    <div class="timeline-instructions">
+                        <p><i class="fas fa-arrow-down"></i> Drag templates here or add phases manually</p>
+                    </div>
+                    <div id="timeline" class="timeline">
+                        <!-- Timeline phases will be added here -->
+                    </div>
+                    <button id="addPhase" class="btn secondary">
+                        <i class="fas fa-plus"></i> Add Phase
+                    </button>
+                </div>
 
-  <script src="script.js"></script>
+                <div class="active-timer">
+                    <h2>Current Phase</h2>
+                    <div class="timer-display">
+                        <div id="currentPhase">No phase running</div>
+                        <div id="timer">00:00</div>
+                        <div class="timer-controls">
+                            <button id="startTimer" class="btn primary" title="Start/Resume Timer">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <button id="pauseTimer" class="btn secondary" title="Pause Timer">
+                                <i class="fas fa-pause"></i>
+                            </button>
+                            <button id="resetTimer" class="btn secondary" title="Reset Timer">
+                                <i class="fas fa-undo"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="timer-instructions">
+                        <p><i class="fas fa-info-circle"></i> Timer will automatically advance to the next phase</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="templates-panel">
+                <h2>Quick Templates <span class="drag-hint">(Drag to Timeline)</span></h2>
+                <div class="template-instructions">
+                    <p>Choose a pre-configured workshop template or create your own:</p>
+                </div>
+                <div class="template-list">
+                    <button class="template-btn" data-template="warmup" draggable="true">
+                        <i class="fas fa-fire"></i>
+                        Warm-up Session
+                        <span class="template-duration">70 min</span>
+                    </button>
+                    <button class="template-btn" data-template="skills" draggable="true">
+                        <i class="fas fa-tools"></i>
+                        Skills Building
+                        <span class="template-duration">130 min</span>
+                    </button>
+                    <button class="template-btn" data-template="vision" draggable="true">
+                        <i class="fas fa-eye"></i>
+                        Vision Building
+                        <span class="template-duration">130 min</span>
+                    </button>
+                    <button class="template-btn" data-template="strategy" draggable="true">
+                        <i class="fas fa-chess"></i>
+                        Strategy Session
+                        <span class="template-duration">160 min</span>
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Need help with LSP facilitation? Visit the 
+                <a href="https://www.innovationtraining.org/lego-serious-play-open-source-pdf-guide/" target="_blank" rel="noopener noreferrer">
+                    LSP Open Source Guide <i class="fas fa-external-link-alt"></i>
+                </a>
+            </p>
+            <p class="copyright">© 2024 All rights reserved. LEGO® is a trademark of the LEGO Group.</p>
+        </footer>
+    </div>
+
+    <!-- Modal for adding/editing phases -->
+    <div id="phaseModal" class="modal">
+        <div class="modal-content">
+            <h2>Phase Details</h2>
+            <div class="modal-instructions">
+                <p>Define your workshop phase:</p>
+            </div>
+            <form id="phaseForm">
+                <div class="form-group">
+                    <label for="phaseName">Phase Name:</label>
+                    <input type="text" id="phaseName" required placeholder="e.g., Skills Building">
+                </div>
+                <div class="form-group">
+                    <label for="phaseDuration">Duration (minutes):</label>
+                    <input type="number" id="phaseDuration" required min="1" placeholder="e.g., 30">
+                </div>
+                <div class="form-group">
+                    <label for="phaseDescription">Description:</label>
+                    <textarea id="phaseDescription" placeholder="Describe the activities and goals of this phase"></textarea>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" class="btn primary">Save Phase</button>
+                    <button type="button" class="btn secondary" id="cancelPhase">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
