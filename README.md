@@ -2,6 +2,8 @@
 
 A powerful web application designed to help LEGO® SERIOUS PLAY® facilitators plan, time, and manage their workshop sessions effectively. This tool streamlines the workshop planning process and helps maintain optimal timing during live sessions.
 
+🌐 **[Try it now](https://djeich.github.io/lsp-session-planner/)** 
+
 ## Features
 
 - **Interactive Workshop Timeline**
@@ -29,7 +31,7 @@ A powerful web application designed to help LEGO® SERIOUS PLAY® facilitators p
 
 ## Usage
 
-1. Visit the [LSP Session Planner & Timer](https://yourusername.github.io/lsp-session-planner/) website
+1. Visit [LSP Session Planner & Timer](https://djeich.github.io/lsp-session-planner/)
 2. Create a new workshop or use a pre-configured template
 3. Customize phases and timings as needed
 4. Use the timer during your session
@@ -39,7 +41,7 @@ A powerful web application designed to help LEGO® SERIOUS PLAY® facilitators p
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/lsp-session-planner.git
+   git clone https://github.com/djeich/lsp-session-planner.git
    ```
 
 2. Open the project folder:

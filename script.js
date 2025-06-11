@@ -1,45 +1,279 @@
-// Workshop Templates
+// Workshop Templates with detailed activity descriptions
 const WORKSHOP_TEMPLATES = {
     warmup: {
         name: 'Warm-up Session',
         phases: [
-            { name: 'Introduction', duration: 10, description: 'Welcome and session overview' },
-            { name: 'Skills Building', duration: 15, description: 'Basic brick connection exercises' },
-            { name: 'Simple Metaphor', duration: 20, description: 'Build something that represents your role' },
-            { name: 'Sharing', duration: 15, description: 'Share and discuss builds' },
-            { name: 'Wrap-up', duration: 10, description: 'Key takeaways and next steps' }
+            {
+                name: 'Introduction',
+                duration: 10,
+                description: 'Welcome and session overview',
+                detailedGuide: `
+                    • Welcome participants and arrange seating
+                    • Introduce LSP methodology and its core principles
+                    • Set ground rules: everyone builds, everyone shares
+                    • Explain the importance of metaphorical thinking
+                    • Address any initial questions or concerns`
+            },
+            {
+                name: 'Skills Building',
+                duration: 15,
+                description: 'Basic brick connection exercises',
+                detailedGuide: `
+                    • Start with simple builds (2-3 minutes each):
+                    • Build a tower as high as possible
+                    • Create something that moves
+                    • Make a bridge between two points
+                    • Focus on getting comfortable with the bricks
+                    • Encourage experimentation with different connections`
+            },
+            {
+                name: 'Simple Metaphor',
+                duration: 20,
+                description: 'Build something that represents your role',
+                detailedGuide: `
+                    • Ask participants to build a model representing their role
+                    • Prompt: "Build a model that shows how you see your role in your organization"
+                    • Give 7-8 minutes for building
+                    • Remind them to focus on metaphorical rather than literal representation
+                    • Encourage use of colors and shapes to represent feelings and concepts`
+            },
+            {
+                name: 'Sharing',
+                duration: 15,
+                description: 'Share and discuss builds',
+                detailedGuide: `
+                    • Each person shares their model (2-3 minutes each)
+                    • Use the "builder holds the meaning" principle
+                    • Ask probing questions to deepen understanding
+                    • Encourage others to ask questions
+                    • Look for patterns and connections between models`
+            },
+            {
+                name: 'Wrap-up',
+                duration: 10,
+                description: 'Key takeaways and next steps',
+                detailedGuide: `
+                    • Summarize key insights from the session
+                    • Discuss how metaphors helped understanding
+                    • Preview next steps or future sessions
+                    • Collect feedback on the experience
+                    • End with a quick reflection round`
+            }
         ]
     },
     skills: {
         name: 'Skills Building',
         phases: [
-            { name: 'Introduction', duration: 15, description: 'LSP methodology overview' },
-            { name: 'Basic Skills', duration: 20, description: 'Fundamental building techniques' },
-            { name: 'Metaphor Practice', duration: 25, description: 'Creating simple metaphors' },
-            { name: 'Advanced Techniques', duration: 30, description: 'Complex building challenges' },
-            { name: 'Group Build', duration: 25, description: 'Collaborative building exercise' },
-            { name: 'Reflection', duration: 15, description: 'Learning consolidation' }
+            {
+                name: 'Introduction',
+                duration: 15,
+                description: 'LSP methodology overview',
+                detailedGuide: `
+                    • Explain the science behind LSP (hand-mind connection)
+                    • Share the core process: Build → Share → Reflect
+                    • Demonstrate basic building techniques
+                    • Explain the role of metaphors in LSP
+                    • Set expectations for the session`
+            },
+            {
+                name: 'Basic Skills',
+                duration: 20,
+                description: 'Fundamental building techniques',
+                detailedGuide: `
+                    • Start with basic construction challenges:
+                    • Build something tall (structural integrity)
+                    • Create something that balances
+                    • Make connections between different pieces
+                    • Focus on brick manipulation and basic techniques
+                    • Share quick insights about each build`
+            },
+            {
+                name: 'Metaphor Practice',
+                duration: 25,
+                description: 'Creating simple metaphors',
+                detailedGuide: `
+                    • Introduce metaphorical thinking with simple exercises:
+                    • "Build your morning mood"
+                    • "Create your ideal workspace"
+                    • "Show what success looks like"
+                    • Practice translating concepts into physical models
+                    • Encourage creative use of colors and shapes`
+            },
+            {
+                name: 'Advanced Techniques',
+                duration: 30,
+                description: 'Complex building challenges',
+                detailedGuide: `
+                    • Move to more complex metaphorical challenges:
+                    • Build a model showing team dynamics
+                    • Create a representation of your biggest challenge
+                    • Show the relationship between different stakeholders
+                    • Focus on connecting ideas and concepts
+                    • Practice modifying models based on insights`
+            },
+            {
+                name: 'Group Build',
+                duration: 25,
+                description: 'Collaborative building exercise',
+                detailedGuide: `
+                    • Facilitate a shared building experience:
+                    • Define a common challenge or theme
+                    • Each person builds their perspective
+                    • Create connections between individual models
+                    • Develop a shared narrative
+                    • Practice landscape development`
+            },
+            {
+                name: 'Reflection',
+                duration: 15,
+                description: 'Learning consolidation',
+                detailedGuide: `
+                    • Review all skills learned
+                    • Discuss how to apply these in future sessions
+                    • Share tips for facilitating others
+                    • Address remaining questions
+                    • Plan next steps for skill development`
+            }
         ]
     },
     vision: {
         name: 'Vision Building',
         phases: [
-            { name: 'Context Setting', duration: 15, description: 'Project goals and expectations' },
-            { name: 'Individual Vision', duration: 30, description: 'Personal vision building' },
-            { name: 'Sharing Round', duration: 25, description: 'Present individual visions' },
-            { name: 'Shared Vision', duration: 35, description: 'Build collective vision' },
-            { name: 'Action Planning', duration: 25, description: 'Next steps and commitments' }
+            {
+                name: 'Context Setting',
+                duration: 15,
+                description: 'Project goals and expectations',
+                detailedGuide: `
+                    • Frame the vision-building challenge
+                    • Share relevant background information
+                    • Define scope and constraints
+                    • Explain the process and timeline
+                    • Set ground rules for the session`
+            },
+            {
+                name: 'Individual Vision',
+                duration: 30,
+                description: 'Personal vision building',
+                detailedGuide: `
+                    • Guide participants through personal vision creation:
+                    • "Build your ideal future state"
+                    • Focus on aspirational elements
+                    • Include key success factors
+                    • Consider various stakeholders
+                    • Add elements of time and scale`
+            },
+            {
+                name: 'Sharing Round',
+                duration: 25,
+                description: 'Present individual visions',
+                detailedGuide: `
+                    • Each person presents their vision (3-4 minutes)
+                    • Use appreciative inquiry techniques
+                    • Identify common themes
+                    • Document key insights
+                    • Look for alignment opportunities`
+            },
+            {
+                name: 'Shared Vision',
+                duration: 35,
+                description: 'Build collective vision',
+                detailedGuide: `
+                    • Facilitate collective vision creation:
+                    • Identify common elements from individual visions
+                    • Build connections between models
+                    • Create shared landscape
+                    • Address conflicts or differences
+                    • Develop unified narrative`
+            },
+            {
+                name: 'Action Planning',
+                duration: 25,
+                description: 'Next steps and commitments',
+                detailedGuide: `
+                    • Transform vision into actionable steps:
+                    • Identify key initiatives
+                    • Assign responsibilities
+                    • Set timelines
+                    • Define success metrics
+                    • Plan follow-up sessions`
+            }
         ]
     },
     strategy: {
         name: 'Strategy Session',
         phases: [
-            { name: 'Current State', duration: 25, description: 'Build present situation' },
-            { name: 'Future State', duration: 30, description: 'Build desired future' },
-            { name: 'Challenges', duration: 25, description: 'Identify obstacles' },
-            { name: 'Solutions', duration: 35, description: 'Develop strategies' },
-            { name: 'Integration', duration: 25, description: 'Connect solutions' },
-            { name: 'Action Plan', duration: 20, description: 'Define next steps' }
+            {
+                name: 'Current State',
+                duration: 25,
+                description: 'Build present situation',
+                detailedGuide: `
+                    • Guide participants to model current reality:
+                    • Map key stakeholders and relationships
+                    • Identify current challenges
+                    • Show resource allocation
+                    • Represent market position
+                    • Include external factors`
+            },
+            {
+                name: 'Future State',
+                duration: 30,
+                description: 'Build desired future',
+                detailedGuide: `
+                    • Create models of desired future:
+                    • Define success criteria
+                    • Show improved stakeholder relationships
+                    • Represent new opportunities
+                    • Include competitive advantages
+                    • Build aspirational elements`
+            },
+            {
+                name: 'Challenges',
+                duration: 25,
+                description: 'Identify obstacles',
+                detailedGuide: `
+                    • Model barriers to success:
+                    • Build internal challenges
+                    • Show external threats
+                    • Identify resource gaps
+                    • Represent risks
+                    • Show dependencies`
+            },
+            {
+                name: 'Solutions',
+                duration: 35,
+                description: 'Develop strategies',
+                detailedGuide: `
+                    • Create solution models:
+                    • Build potential approaches
+                    • Show resource allocation
+                    • Represent timelines
+                    • Include success metrics
+                    • Model implementation steps`
+            },
+            {
+                name: 'Integration',
+                duration: 25,
+                description: 'Connect solutions',
+                detailedGuide: `
+                    • Combine solutions into coherent strategy:
+                    • Link different approaches
+                    • Show dependencies
+                    • Create implementation sequence
+                    • Address potential conflicts
+                    • Build support systems`
+            },
+            {
+                name: 'Action Plan',
+                duration: 20,
+                description: 'Define next steps',
+                detailedGuide: `
+                    • Transform strategy into action:
+                    • Define immediate next steps
+                    • Assign responsibilities
+                    • Set milestones
+                    • Plan review points
+                    • Document commitments`
+            }
         ]
     }
 };
@@ -135,6 +369,9 @@ function createPhaseElement(phase, index) {
             <div class="phase-description">${phase.description || ''}</div>
         </div>
         <div class="phase-controls">
+            <button class="btn info" onclick="showDetailedGuide(currentWorkshop.phases[${index}])">
+                <i class="fas fa-info-circle"></i>
+            </button>
             <button class="btn secondary" onclick="editPhase(${index})">
                 <i class="fas fa-edit"></i>
             </button>
@@ -418,30 +655,74 @@ function closeModal() {
 
 // Drag and Drop
 function setupDragAndDrop() {
+    const timeline = document.getElementById('timeline');
+    const templateButtons = document.querySelectorAll('.template-btn');
+
+    templateButtons.forEach(btn => {
+        btn.addEventListener('dragstart', (e) => {
+            btn.classList.add('dragging');
+            e.dataTransfer.setData('text/plain', btn.dataset.template);
+        });
+
+        btn.addEventListener('dragend', () => {
+            btn.classList.remove('dragging');
+        });
+    });
+
     timeline.addEventListener('dragover', (e) => {
         e.preventDefault();
-        const draggable = document.querySelector('.dragging');
-        const afterElement = getDragAfterElement(timeline, e.clientY);
-        if (afterElement == null) {
-            timeline.appendChild(draggable);
-        } else {
-            timeline.insertBefore(draggable, afterElement);
+        timeline.classList.add('drag-over');
+    });
+
+    timeline.addEventListener('dragleave', () => {
+        timeline.classList.remove('drag-over');
+    });
+
+    timeline.addEventListener('drop', (e) => {
+        e.preventDefault();
+        timeline.classList.remove('drag-over');
+        
+        const templateName = e.dataTransfer.getData('text/plain');
+        const template = WORKSHOP_TEMPLATES[templateName];
+        
+        if (template) {
+            loadTemplate(template);
         }
     });
 }
 
-function getDragAfterElement(container, y) {
-    const draggableElements = [...container.querySelectorAll('.phase-item:not(.dragging)')];
-
-    return draggableElements.reduce((closest, child) => {
-        const box = child.getBoundingClientRect();
-        const offset = y - box.top - box.height / 2;
-        if (offset < 0 && offset > closest.offset) {
-            return { offset: offset, element: child };
-        } else {
-            return closest;
-        }
-    }, { offset: Number.NEGATIVE_INFINITY }).element;
+// Add function to show detailed guide
+function showDetailedGuide(phase) {
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.style.display = 'block';
+    
+    const modalContent = document.createElement('div');
+    modalContent.className = 'modal-content activity-guide';
+    
+    modalContent.innerHTML = `
+        <h2>${phase.name}</h2>
+        <div class="activity-meta">
+            <span class="duration"><i class="fas fa-clock"></i> ${phase.duration} minutes</span>
+        </div>
+        <p class="activity-description">${phase.description}</p>
+        <div class="detailed-guide">
+            <h3>Facilitation Guide</h3>
+            <div class="guide-content">
+                ${phase.detailedGuide}
+            </div>
+        </div>
+        <button class="btn secondary close-modal">
+            <i class="fas fa-times"></i> Close
+        </button>
+    `;
+    
+    modal.appendChild(modalContent);
+    document.body.appendChild(modal);
+    
+    modalContent.querySelector('.close-modal').onclick = () => {
+        modal.remove();
+    };
 }
 
 // Notifications

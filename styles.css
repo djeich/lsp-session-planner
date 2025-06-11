@@ -630,62 +630,103 @@ footer {
 }
 
 .modal {
-    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     z-index: 1000;
 }
 
 .modal-content {
-    background-color: var(--surface-color);
+    background-color: white;
     padding: 2rem;
-    border-radius: 12px;
+    border-radius: 8px;
+    max-width: 600px;
     width: 90%;
-    max-width: 500px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 3px solid var(--lego-blue);
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.form-group {
+.activity-guide {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.activity-guide h2 {
+    color: var(--lego-blue);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.activity-meta {
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+}
+
+.activity-description {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.detailed-guide {
+    background-color: var(--bg-secondary);
+    padding: 1.5rem;
+    border-radius: 6px;
     margin-bottom: 1.5rem;
 }
 
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: var(--text-secondary);
-    font-weight: 600;
+.detailed-guide h3 {
+    color: var(--lego-red);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
 }
 
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 0.8rem;
-    border: 2px solid var(--border-color);
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: all 0.3s ease;
+.guide-content {
+    white-space: pre-line;
+    color: var(--text-primary);
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
-    border-color: var(--lego-blue);
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 85, 191, 0.2);
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
 }
 
-.form-buttons {
+/* Timeline drag and drop styles */
+.timeline.drag-over {
+    border: 2px dashed var(--lego-blue);
+    background-color: rgba(0, 109, 183, 0.1);
+}
+
+.template-btn.dragging {
+    opacity: 0.5;
+}
+
+/* Info button styles */
+.btn.info {
+    background-color: var(--lego-yellow);
+    color: var(--text-primary);
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
     display: flex;
-    justify-content: flex-end;
-    gap: 1rem;
-    margin-top: 2rem;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.5rem;
+}
+
+.btn.info:hover {
+    background-color: var(--lego-yellow-dark);
+    transform: scale(1.1);
 }
 
 @media (max-width: 768px) {
