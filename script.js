@@ -873,6 +873,8 @@ function saveTemplate() {
 
     const modal = document.createElement('div');
     modal.className = 'modal';
+    modal.style.display = 'block';
+    
     modal.innerHTML = `
         <div class="modal-content">
             <h2>Save Workshop Template</h2>
@@ -880,18 +882,22 @@ function saveTemplate() {
                 <label for="templateName">Template Name:</label>
                 <input type="text" id="templateName" value="${currentWorkshop.name || ''}" placeholder="Enter template name">
             </div>
-            <div class="save-options">
+            <div class="form-buttons">
                 <button class="btn primary" onclick="downloadJSON()">
-                    <i class="fas fa-file-download"></i> Download JSON
+                    <i class="fas fa-file-download"></i> Download as JSON
                 </button>
                 <button class="btn primary" onclick="downloadPDF()">
-                    <i class="fas fa-file-pdf"></i> Download PDF
-                </button>
-                <button class="btn secondary" onclick="this.closest('.modal').remove()">
-                    <i class="fas fa-times"></i> Cancel
+                    <i class="fas fa-file-pdf"></i> Download as PDF
                 </button>
             </div>
         </div>
     `;
     document.body.appendChild(modal);
+
+    // Close modal when clicking outside
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.remove();
+        }
+    });
 }
