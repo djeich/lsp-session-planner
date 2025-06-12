@@ -1019,4 +1019,21 @@ footer a:hover {
     display: block;
     margin: 1rem auto;
     padding: 1rem 2rem;
+}
+
+.save-options {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    justify-content: flex-end;
+}
+
+.save-options .btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.save-options .btn i {
+    font-size: 1.1rem;
 } 
