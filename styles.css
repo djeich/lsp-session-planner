@@ -1036,4 +1036,8 @@ footer a:hover {
 
 .save-options .btn i {
     font-size: 1.1rem;
+}
+
+#phaseModal {
+    display: none;
 } 
