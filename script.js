@@ -514,7 +514,6 @@ function loadTemplate(template) {
     // Append new phases instead of replacing
     currentWorkshop.phases = [...currentWorkshop.phases, ...template.phases];
     updateTimeline();
-    updateTotalDuration();
 }
 
 // Local Storage Management
@@ -883,4 +882,32 @@ function saveTemplate() {
             modal.remove();
         }
     });
+}
+
+// Add the missing downloadJSON function
+function downloadJSON() {
+    const templateName = document.getElementById('templateName')?.value || currentWorkshop.name || 'untitled';
+    const templateData = {
+        name: templateName,
+        phases: currentWorkshop.phases,
+        exportDate: new Date().toISOString()
+    };
+
+    const dataStr = JSON.stringify(templateData, null, 2);
+    const dataBlob = new Blob([dataStr], { type: 'application/json' });
+    const url = URL.createObjectURL(dataBlob);
+    
+    const downloadLink = document.createElement('a');
+    downloadLink.href = url;
+    downloadLink.download = `lsp-workshop-${templateName.toLowerCase().replace(/\s+/g, '-')}.json`;
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+    URL.revokeObjectURL(url);
+    
+    // Close the modal
+    const modal = document.querySelector('.modal');
+    if (modal) {
+        modal.remove();
+    }
 }
